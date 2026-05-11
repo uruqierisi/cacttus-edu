@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { socialLinks } from "@/data/nav";
 
 const footerLinks = [
@@ -41,13 +42,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 mb-10">
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-[#8E4897] flex items-center justify-center">
-                <span className="text-white font-sora font-bold text-sm">C</span>
-              </div>
-              <span className="font-sora font-bold text-white text-lg">
-                Cacttus <span className="text-[#8E4897]">Education</span>
-              </span>
+            <div className="mb-4">
+              <Image
+                src="/cacttus.png"
+                alt="Cacttus Education"
+                width={160}
+                height={40}
+                className="h-8 w-auto object-contain"
+              />
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-4 max-w-xs">
               Cacttus Education është lider në Kosovë në ofrimin e edukimit profesional në fushën e

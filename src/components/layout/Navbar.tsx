@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { studimeDropdown, bizneseDropdown, projektetDropdown } from "@/data/nav";
 
 interface NavbarProps {
@@ -92,16 +93,18 @@ export default function Navbar({ onApply }: NavbarProps) {
           {/* Logo */}
           <a
             href="#hero"
-            className="flex items-center gap-2 flex-shrink-0"
+            className="flex items-center flex-shrink-0"
             aria-label="Cacttus Education"
             onClick={closeDrawer}
           >
-            <div className="w-8 h-8 rounded-lg bg-[#8E4897] flex items-center justify-center flex-shrink-0">
-              <span className="text-white font-sora font-bold text-sm">C</span>
-            </div>
-            <span className="font-sora font-bold text-white text-base sm:text-lg tracking-tight">
-              Cacttus <span className="text-[#8E4897]">Education</span>
-            </span>
+            <Image
+              src="/cacttus.png"
+              alt="Cacttus Education"
+              width={160}
+              height={40}
+              className="h-8 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -308,13 +311,14 @@ export default function Navbar({ onApply }: NavbarProps) {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/10 flex-shrink-0">
-                <a href="#hero" onClick={closeDrawer} className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-[#8E4897] flex items-center justify-center">
-                    <span className="text-white font-sora font-bold text-xs">C</span>
-                  </div>
-                  <span className="font-sora font-bold text-white text-base">
-                    Cacttus <span className="text-[#8E4897]">Education</span>
-                  </span>
+                <a href="#hero" onClick={closeDrawer} className="flex items-center">
+                  <Image
+                    src="/cacttus.png"
+                    alt="Cacttus Education"
+                    width={140}
+                    height={36}
+                    className="h-7 w-auto object-contain"
+                  />
                 </a>
                 <button
                   onClick={closeDrawer}
