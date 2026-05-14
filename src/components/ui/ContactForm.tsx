@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Button from "./Button";
 
 interface ContactFormProps {
   onSuccess?: () => void;
@@ -48,7 +47,7 @@ export default function ContactForm({ onSuccess, compact = false }: ContactFormP
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-${compact ? "3" : "4"}`}>
+    <form onSubmit={handleSubmit} className={compact ? "space-y-3" : "space-y-4"}>
       <div>
         <label htmlFor="name" className="block text-xs font-medium text-white/60 mb-1.5">
           Emri <span className="text-[#8E4897]">*</span>
@@ -115,9 +114,12 @@ export default function ContactForm({ onSuccess, compact = false }: ContactFormP
         </select>
       </div>
 
-      <Button type="submit" variant="primary" className="w-full mt-2" size="md">
+      <button
+        type="submit"
+        className="w-full mt-2 bg-[#8E4897] hover:bg-[#5C2F65] text-white font-semibold text-sm py-3 px-6 rounded-xl transition-colors duration-200"
+      >
         KONTAKTO
-      </Button>
+      </button>
     </form>
   );
 }

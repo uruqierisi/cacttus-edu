@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface AnnouncementBarProps {
   onApply: () => void;
@@ -11,35 +10,45 @@ export default function AnnouncementBar({ onApply }: AnnouncementBarProps) {
   const [dismissed, setDismissed] = useState(false);
 
   return (
-    <AnimatePresence>
-      {!dismissed && (
-        <motion.div
-          initial={{ height: "auto" }}
-          exit={{ height: 0, opacity: 0 }}
-          className="bg-gradient-to-r from-[#5C2F65] via-[#8E4897] to-[#5C2F65] text-white overflow-hidden relative"
-        >
-          <div className="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-center gap-3 text-sm font-grotesk">
-            <span className="font-medium text-center">
-              🎓 Apliko për <strong>Bursë deri në 80%</strong> — Mundësi e kufizuar!
-            </span>
-            <button
-              onClick={onApply}
-              className="bg-white text-[#8E4897] font-bold text-xs px-4 py-1.5 rounded-full hover:bg-white/90 transition-colors flex-shrink-0"
-            >
-              APLIKO TANI
-            </button>
-          </div>
+    <div
+      style={{
+        height: dismissed ? 0 : "auto",
+        opacity: dismissed ? 0 : 1,
+        overflow: "hidden",
+        transition: "height 0.35s ease, opacity 0.2s ease",
+      }}
+    >
+      <div className="relative border-b border-[#8E4897]/[0.18] bg-[#0A0710]">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-2.5 px-10 py-2.5 text-center sm:gap-3">
+          <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#8E4897]" />
+          <p className="font-grotesk text-xs text-white/50 sm:text-[13px]">
+            Apliko për{" "}
+            <span className="font-semibold text-white/75">Bursë deri në 80%</span>
+            {" "}— Mundësi e kufizuar!
+          </p>
           <button
-            onClick={() => setDismissed(true)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-1"
-            aria-label="Mbylle"
+            onClick={onApply}
+            className="flex-shrink-0 rounded-full border border-[#8E4897]/30 px-3.5 py-1 font-grotesk text-[11px] font-semibold text-[#C088CB] transition-all hover:border-[#8E4897]/60 hover:bg-[#8E4897]/10"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            Apliko →
           </button>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        </div>
+        <button
+          onClick={() => setDismissed(true)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-white/25 transition-colors hover:text-white/60"
+          aria-label="Mbylle"
+        >
+          <svg
+            className="h-3 w-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
   );
 }

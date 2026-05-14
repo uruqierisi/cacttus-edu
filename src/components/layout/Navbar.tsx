@@ -82,7 +82,7 @@ export default function Navbar({ onApply }: NavbarProps) {
       <header
         className={`fixed left-0 right-0 z-40 top-0 sm:top-9 transition-all duration-300 ${
           scrolled
-            ? "bg-[#0F0A14]/95 backdrop-blur-md border-b border-white/10 shadow-lg"
+            ? "bg-[#0F0A14]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_1px_0_rgba(255,255,255,0.03)]"
             : "bg-[#0F0A14]"
         }`}
       >
@@ -263,14 +263,14 @@ export default function Navbar({ onApply }: NavbarProps) {
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={onApply}
-              className="inline-flex items-center bg-[#8E4897] hover:bg-[#5C2F65] text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 rounded-full transition-all duration-200 shadow-lg shadow-[#8E4897]/20 min-h-[40px]"
+              className="inline-flex h-8 items-center rounded-full bg-[#8E4897] px-4 font-grotesk text-xs font-semibold text-white ring-1 ring-inset ring-white/[0.08] transition-all hover:bg-[#7B3E88] active:scale-[.98]"
             >
               Apliko tani
             </button>
 
             {/* Hamburger — mobile only */}
             <button
-              className="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+              className="lg:hidden flex h-9 w-9 items-center justify-center rounded-xl text-white/50 hover:bg-white/[0.06] hover:text-white transition-colors"
               onClick={() => setDrawerOpen(true)}
               aria-label="Hap menunë"
               aria-expanded={drawerOpen}
@@ -394,7 +394,7 @@ export default function Navbar({ onApply }: NavbarProps) {
               <div className="px-4 py-5 border-t border-white/10 flex-shrink-0">
                 <button
                   onClick={() => { closeDrawer(); onApply(); }}
-                  className="w-full bg-[#8E4897] hover:bg-[#5C2F65] text-white font-semibold py-3.5 rounded-full transition-all duration-200 text-sm font-grotesk min-h-[52px]"
+                  className="w-full h-11 rounded-full bg-[#8E4897] font-grotesk text-sm font-semibold text-white ring-1 ring-inset ring-white/[0.08] transition-all hover:bg-[#7B3E88]"
                 >
                   Apliko tani
                 </button>

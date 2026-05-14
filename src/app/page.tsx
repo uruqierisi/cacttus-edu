@@ -30,7 +30,7 @@ export default function Home() {
       {/* Push content below fixed header
           Mobile: TopBar hidden → only Navbar (64px)
           sm+:    TopBar (36px) + Navbar (64px) = 100px           */}
-      <div className="pt-16 sm:pt-[100px]">
+      <div className="pt-16 sm:pt-[100px] w-full overflow-x-hidden">
         <AnnouncementBar onApply={() => setModalOpen(true)} />
 
         <main>

@@ -28,7 +28,7 @@ export default function ApplyCTA() {
           {/* Left: text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.55 }}
           >
             <div className="inline-flex items-center gap-2 bg-[#8E4897]/20 border border-[#8E4897]/30 rounded-full px-4 py-1.5 mb-6">
@@ -38,7 +38,7 @@ export default function ApplyCTA() {
               Apliko{" "}
               <span className="text-gradient">Tani!</span>
             </h2>
-            <p className="text-white/50 text-lg leading-relaxed font-grotesk mb-8">
+            <p className="text-white/50 text-base sm:text-lg leading-relaxed font-grotesk mb-8">
               Bëhu pjesë e komunitetit tonë prej mbi 1000 studentësh. Ekspertët tanë do të
               të udhëheqin hap pas hapi drejt karrierës tënde në teknologji.
             </p>
@@ -60,10 +60,10 @@ export default function ApplyCTA() {
           {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ delay: 0.15, duration: 0.55 }}
           >
-            <div className="bg-[#0F0A14] border border-white/10 rounded-2xl p-8 shadow-2xl">
+            <div className="bg-[#0F0A14] border border-white/10 rounded-2xl p-5 sm:p-8 shadow-2xl">
               <h3 className="font-sora font-bold text-xl text-white mb-1">Na kontakto</h3>
               <p className="text-white/40 text-sm mb-6 font-grotesk">
                 Plotëso formularin dhe ne do të të kontaktojmë brenda 24 orësh.

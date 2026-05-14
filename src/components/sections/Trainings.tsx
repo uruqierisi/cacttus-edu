@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { trainings, trainingCategories, cities } from "@/data/trainings";
 import type { TrainingCategory, City } from "@/types";
 
@@ -33,7 +33,7 @@ export default function Trainings() {
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
@@ -56,7 +56,7 @@ export default function Trainings() {
         {/* Category filters — horizontal scroll on mobile, no wrap */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ delay: 0.1, duration: 0.45 }}
           className="mb-3"
         >
@@ -80,7 +80,7 @@ export default function Trainings() {
         {/* City filters — wraps on mobile */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ delay: 0.15, duration: 0.4 }}
           className="flex flex-wrap gap-2 justify-center mb-8"
         >
@@ -102,14 +102,14 @@ export default function Trainings() {
         {/* Table — horizontal scroll on mobile */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="bg-[#1A1025] border border-white/8 rounded-2xl overflow-hidden"
+          className="bg-[#120D1C] border border-white/[0.07] rounded-2xl overflow-hidden"
         >
           <div className="overflow-x-auto scrollbar-hide">
-            <table className="w-full min-w-[500px]">
+            <table className="w-full min-w-[600px]">
               <thead>
-                <tr className="border-b border-white/8">
+                <tr className="border-b border-white/[0.07]">
                   <th className="text-left px-4 sm:px-6 py-4 text-xs font-semibold text-white/40 uppercase tracking-wider font-grotesk">
                     Trajnimi
                   </th>
@@ -134,7 +134,6 @@ export default function Trainings() {
                 </tr>
               </thead>
               <tbody>
-                <AnimatePresence mode="wait">
                   {filtered.length === 0 ? (
                     <tr>
                       <td colSpan={7} className="text-center py-14 text-white/30 font-grotesk text-sm">
@@ -142,14 +141,10 @@ export default function Trainings() {
                       </td>
                     </tr>
                   ) : (
-                    filtered.map((training, i) => (
-                      <motion.tr
+                    filtered.map((training) => (
+                      <tr
                         key={training.id}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ delay: i * 0.05, duration: 0.3 }}
-                        className="border-b border-white/5 hover:bg-white/[0.03] transition-colors group"
+                        className="border-b border-white/[0.05] hover:bg-white/[0.025] transition-colors group"
                       >
                         <td className="px-4 sm:px-6 py-4">
                           <span className="text-sm font-medium text-white font-grotesk group-hover:text-[#B06BBD] transition-colors leading-snug">
@@ -199,10 +194,9 @@ export default function Trainings() {
                             Apliko →
                           </a>
                         </td>
-                      </motion.tr>
+                      </tr>
                     ))
                   )}
-                </AnimatePresence>
               </tbody>
             </table>
           </div>

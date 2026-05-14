@@ -46,9 +46,9 @@ export default function Programs() {
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          className="text-center mb-12"
         >
           <span className="inline-flex items-center gap-2 text-[#8E4897] text-sm font-semibold font-grotesk uppercase tracking-widest mb-4">
             <span className="w-6 h-px bg-[#8E4897]" />
@@ -71,9 +71,9 @@ export default function Programs() {
             <motion.div
               key={prog.title}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.1 + i * 0.15, duration: 0.55 }}
-              className="group relative bg-[#1A1025] border border-white/8 rounded-2xl p-8 hover:border-[#8E4897]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#8E4897]/10 hover:-translate-y-1"
+              className="group relative bg-[#120D1C] border border-white/[0.07] rounded-2xl p-5 sm:p-8 hover:border-[#8E4897]/30 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(142,72,151,0.08)]"
             >
               {/* Badge */}
               <div className="absolute top-6 right-6">
@@ -127,7 +127,7 @@ export default function Programs() {
               </a>
 
               {/* Decorative gradient border bottom */}
-              <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#8E4897]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#8E4897]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.div>
           ))}
         </div>
