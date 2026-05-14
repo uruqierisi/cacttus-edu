@@ -1,6 +1,7 @@
 "use server"
 
 import { signIn } from "@/lib/auth"
+import { prisma } from "@/lib/prisma"
 import { AuthError } from "next-auth"
 
 const loginAttempts = new Map<string, { count: number; firstAttempt: number }>()
@@ -39,11 +40,17 @@ export async function loginAction(
     return "Too many login attempts. Please try again in 15 minutes."
   }
 
+  const user = await prisma.user.findUnique({
+    where: { email: email.trim() },
+    select: { role: true },
+  })
+  const redirectTo = user?.role === "ADMIN" ? "/admin" : "/dashboard"
+
   try {
     await signIn("credentials", {
       email: email.trim(),
       password,
-      redirectTo: "/admin",
+      redirectTo,
     })
   } catch (error) {
     if (error instanceof AuthError) {

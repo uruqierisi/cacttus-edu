@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+  },
   experimental: {
     serverComponentsExternalPackages: ["ws"],
   },
