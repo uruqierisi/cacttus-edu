@@ -42,6 +42,7 @@ export default function RootLayout({
     <html lang="sq" className="scroll-smooth">
       <body
         className={`${sora.variable} ${spaceGrotesk.variable} font-grotesk bg-bg text-white antialiased`}
+        suppressHydrationWarning
       >
         {children}
       </body>

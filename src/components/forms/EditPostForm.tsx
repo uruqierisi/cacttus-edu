@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Save, Globe } from "lucide-react"
+import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -17,8 +18,15 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
-import { RichTextEditor } from "@/components/editor/RichTextEditor"
 import { SlugInput } from "@/components/editor/SlugInput"
+
+const RichTextEditor = dynamic(
+  () => import("@/components/editor/RichTextEditor").then((m) => ({ default: m.RichTextEditor })),
+  {
+    ssr: false,
+    loading: () => <div className="h-64 bg-zinc-800 rounded-lg animate-pulse" />,
+  }
+)
 import { ImageUpload } from "@/components/editor/ImageUpload"
 import { createPostSchema, type CreatePostInput } from "@/lib/validations"
 import { editPostAction } from "@/app/actions/posts"
